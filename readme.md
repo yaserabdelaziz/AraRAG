@@ -26,7 +26,7 @@ The project uses environment variables to manage sensitive information. Make sur
 Before running the chatbot, you need to create a vector store using the `create_vector_store.py` script. This script uses the Spellbook API to create a vector store with the name specified in the `VECTOR_STORE_NAME` environment variable.
 
 ## Running the Chatbot
-You can run the chatbot using the `run.py` script. This script uses Gradio to create a chatbot interface. The chatbot can accept text input or a PDF file. If a PDF file is uploaded, the script will extract the text from the PDF and use it as input to the RAG model.
+You can run the chatbot using the `app.py` script. This script uses Gradio to create a chatbot interface. The chatbot can accept text input or a PDF file. If a PDF file is uploaded, the script will extract the text from the PDF and use it as input to the RAG model.
 
 ## Evaluating the Chatbot
 You can evaluate the chatbot's performance using the evaluate.py script. This script uses the Cohere API to evaluate the correctness of the chatbot's answers. The script reads a CSV file with a set of questions and their correct answers, uses the chatbot to answer the questions, and then evaluates the correctness of the chatbot's answers.
