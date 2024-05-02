@@ -1,3 +1,5 @@
 gradio
 PyMuPDF
 cohere
+python-dotenv
+transformers

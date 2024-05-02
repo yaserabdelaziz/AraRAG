@@ -1,3 +1,14 @@
+---
+title: AraRAG
+emoji: 📚
+colorFrom: red
+colorTo: yellow
+sdk: gradio
+sdk_version: 4.28.3
+app_file: app.py
+pinned: false
+---
+
 # AraRAG
 This project is a chatbot application that can process Arabic PDF files. It uses the RAG model for generating responses in Arabic and Gradio for the user interface. The chatbot can also evaluate its own performance using the Cohere API.
 
