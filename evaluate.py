@@ -7,15 +7,15 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 from rag import RAG
-from prompts import preamble, message
+from prompts import eval_preamble, eval_message
 
 
 def evaluate(co, question, agent_answer, ground_truth):
     response = co.chat(
         model='command-r',
-        message=message.format(question=question, agent_answer=agent_answer, ground_truth=ground_truth),
+        message=eval_message.format(question=question, agent_answer=agent_answer, ground_truth=ground_truth),
         temperature=0.0,
-        chat_history=[{"role": "system", "message": preamble}],
+        chat_history=[{"role": "system", "message": eval_preamble}],
         prompt_truncation='AUTO',
         connectors=[]
     )

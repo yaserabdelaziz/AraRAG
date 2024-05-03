@@ -27,7 +27,7 @@ def split_text_on_tokens(text: str, tokenizer: Tokenizer) -> List[str]:
     return splits
 
 
-tokenizer = AutoTokenizer.from_pretrained("CohereForAI/c4ai-command-r-v01")
+tokenizer = AutoTokenizer.from_pretrained("CohereForAI/c4ai-command-r-plus")
 tokenizer = Tokenizer(
     chunk_overlap=50,
     tokens_per_chunk=500,

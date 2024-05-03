@@ -19,23 +19,18 @@ class RAG:
         response = call_spellbook_api(
             endpoint="api/v1/vector-stores/" + self.vector_store_name + "/similarity-search", payload=payload
         )
-        print(response)
 
         docs = [item["text"] for item in response["data"]["items"]]
 
         co = cohere.Client(os.getenv('COHERE_API_KEY'))
-        # print("Message: ", str(message))
-        # response = co.rerank(model="rerank-multilingual-v3.0", query=str(message), documents=docs, top_n=10, return_documents=True)
-        # print(response)
-        # docs = [doc.document.text for doc in response.results if doc.relevance_score > 0.1]
+        response = co.rerank(model="rerank-multilingual-v3.0", query=str(message), documents=docs, top_n=10, return_documents=True)
+        docs = [doc.document.text for doc in response.results if doc.relevance_score > 0.5]
 
         information = "\n\n".join(docs)
-        print(information)
 
         answer = ""
-        print(prompt.format(pdf_file_content=information, message=message))
         for event in co.chat_stream(
-            model='command-r',
+            model='command-r-plus',
             message=prompt.format(pdf_file_content=information, message=message),
             temperature=0.0,
             chat_history=[],

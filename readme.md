@@ -41,3 +41,18 @@ You can run the chatbot using the `app.py` script. This script uses Gradio to cr
 
 ## Evaluating the Chatbot
 You can evaluate the chatbot's performance using the evaluate.py script. This script uses the Cohere API to evaluate the correctness of the chatbot's answers. The script reads a CSV file with a set of questions and their correct answers, uses the chatbot to answer the questions, and then evaluates the correctness of the chatbot's answers.
+
+## Data Flow
+
+![System Architecture](images/system-architecture.jpg)
+
+The data flow in the application is as follows:
+
+1. The user uploads a PDF file in the Gradio interface.
+2. The content of the PDF file is processed by the RAG class.
+3. The processed text is split into chunks and embeddings are generated for each chunk.
+4. The embeddings are ingested into the Spellbook service.
+5. When the user sends a message, embeddings are generated for the message and similar documents are retrieved from the Spellbook service.
+6. The retrieved documents are reranked using [Cohere's reranking model](https://docs.cohere.com/docs/reranking).
+7. The retrieved and reranked documents and the user's message are used to generate a response using the Cohere API.
+8. The generated response is displayed to the user in the Gradio interface.
